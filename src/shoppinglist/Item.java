@@ -4,6 +4,10 @@ public class Item {
 
     private String nomeItem;
 
+    public Item (String nomeItem){
+        this.nomeItem = nomeItem;
+    }
+
     public String getNomeItem() {
         return nomeItem;
     }
@@ -12,14 +16,8 @@ public class Item {
         this.nomeItem = nomeItem;
     }
 
-    public Item(String nomeItem){
-
-    }
-
     @Override
     public String toString() {
-        return "Item{" +
-                "nomeItem='" + nomeItem + '\'' +
-                '}';
+        return nomeItem;
     }
 }

@@ -62,8 +62,8 @@ public class ShoppingListApp {
 
     private void addItem(){
         System.out.println("Digite o nome do item: ");
-        String nome = sc.nextLine();
-        shoppingList.add(new Item(nome));
+        String nomeItem = sc.nextLine();
+        shoppingList.add(new Item(nomeItem));
         System.out.println("Item adicionado com sucesso!");
     }
 
@@ -99,9 +99,9 @@ public class ShoppingListApp {
 
     private void listaDeItens() {
         System.out.println("\nLISTA DE COMPRAS: ");
-        int i;
-        for (i = 0; i < shoppingList.size(); i++) ;
-        System.out.println(i + 1 + ". " + shoppingList.get(i));
+        for (int i = 0; i < shoppingList.size(); i++){
+            System.out.println((i + 1) + ". " + shoppingList.get(i));
+        }
     }
 
 }
