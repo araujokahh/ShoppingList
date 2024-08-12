@@ -1,23 +1,44 @@
 package shoppinglist;
 
+import java.util.ArrayList;
+
 public class Item {
 
-    private String nomeItem;
+    private ArrayList<String> nomes;  // Lista interna de nomes
 
-    public Item (String nomeItem){
-        this.nomeItem = nomeItem;
+    public Item() {
+        this.nomes = new ArrayList<>();
     }
 
-    public String getNomeItem() {
-        return nomeItem;
+    public ArrayList<String> getNomes() {
+        return nomes;
     }
 
-    public void setNomeItem(String nomeItem) {
-        this.nomeItem = nomeItem;
+    public void adicionarNome(String nomeItem) {
+        nomes.add(nomeItem);
     }
 
-    @Override
-    public String toString() {
-        return nomeItem;
+    public void editarNome(int index, String novoNome) {
+        if (index >= 0 && index < nomes.size()) {
+            nomes.set(index, novoNome);
+        } else {
+            System.out.println("Número do item inválido.");
+        }
+    }
+
+    public void removerNome(int index) {
+        if (index >= 0 && index < nomes.size()) {
+            nomes.remove(index);
+        } else {
+            System.out.println("Número do item inválido.");
+        }
+    }
+
+    public String toString(int index) {
+        return nomes.get(index);
+    }
+
+    public int getSize() {
+        return nomes.size();
     }
 }

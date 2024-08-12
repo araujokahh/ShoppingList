@@ -1,34 +1,30 @@
 package shoppinglist;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ShoppingListApp {
 
-    private ArrayList<Item> shoppingList;
+    private Item item;
     private Scanner sc;
 
     public ShoppingListApp() {
-        shoppingList = new ArrayList<>();
+        item = new Item();
         sc = new Scanner(System.in);
     }
 
     public static void main(String[] args) {
         ShoppingListApp app = new ShoppingListApp();
         app.run();
-        
     }
 
-// switch case - cria um loop que para na opção escolhida pelo usuário, chamando o método correspondente.
-// O case 5 interrompe o loop
     private void run() {
         boolean running = true;
-        while (running){
+        while (running) {
             mostrarMenu();
             int opcoes = sc.nextInt();
             sc.nextLine();
 
-            switch (opcoes){
+            switch (opcoes) {
                 case 1:
                     addItem();
                     break;
@@ -60,37 +56,37 @@ public class ShoppingListApp {
         System.out.println("5. Sair.");
     }
 
-    private void addItem(){
+    private void addItem() {
         System.out.println("Digite o nome do item: ");
         String nomeItem = sc.nextLine();
-        shoppingList.add(new Item(nomeItem));
+        item.adicionarNome(nomeItem);
         System.out.println("Item adicionado com sucesso!");
     }
 
-    private void editarItem(){
+    private void editarItem() {
         listaDeItens();
         System.out.println("Digite o número do item a ser editado: ");
-        int numerosDaLista = sc.nextInt() -1;
+        int numerosDaLista = sc.nextInt() - 1;
         sc.nextLine();
 
-        if (numerosDaLista >= 0 && numerosDaLista < shoppingList.size()){
+        if (numerosDaLista >= 0 && numerosDaLista < item.getSize()) {
             System.out.println("Digite o novo nome do item: ");
             String novoNome = sc.nextLine();
-            shoppingList.get(numerosDaLista).setNomeItem(novoNome);
+            item.editarNome(numerosDaLista, novoNome);
             System.out.println("O item foi atualizado com sucesso!");
         } else {
             System.out.println("Número inválido.");
         }
     }
 
-    private void removerItem(){
+    private void removerItem() {
         listaDeItens();
         System.out.println("Digite o número do item a ser removido: ");
-        int numeroDaLista = sc.nextInt() -1;
+        int numeroDaLista = sc.nextInt() - 1;
         sc.nextLine();
 
-        if (numeroDaLista >=0 && numeroDaLista < shoppingList.size()){
-            shoppingList.remove(numeroDaLista);
+        if (numeroDaLista >= 0 && numeroDaLista < item.getSize()) {
+            item.removerNome(numeroDaLista);
             System.out.println("O item foi removido com sucesso!");
         } else {
             System.out.println("Número inválido.");
@@ -99,10 +95,8 @@ public class ShoppingListApp {
 
     private void listaDeItens() {
         System.out.println("\nLISTA DE COMPRAS: ");
-        for (int i = 0; i < shoppingList.size(); i++){
-            System.out.println((i + 1) + ". " + shoppingList.get(i));
+        for (int i = 0; i < item.getSize(); i++) {
+            System.out.println((i + 1) + ". " + item.toString(i));
         }
     }
-
 }
-
